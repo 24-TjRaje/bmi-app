@@ -31,8 +31,8 @@ pipeline {
 
             steps {
                 sh 'docker stop ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true'
-                sh 'docker pull ${IMAGE_NAME}:latest'
-                sh 'docker run --name ${CONTAINER_NAME} -d -p 82:8083 ${IMAGE_NAME}'
+                sh 'docker pull $DOCKER_CREDS_USR/${IMAGE_NAME}:latest'
+                sh 'docker run --name ${CONTAINER_NAME} -d -p 82:8083 $DOCKER_CREDS_USR/${IMAGE_NAME}:latest'
             }
         }    
     }
