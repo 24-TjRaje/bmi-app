@@ -21,6 +21,7 @@ pipeline {
 
             steps {
                 sh 'docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .'
+                sh 'docker tag ${IMAGE_NAME}:${BUILD_NUMBER} $DOCKER_CREDS_USR/${IMAGE_NAME}:${BUILD_NUMBER}'
                 sh 'docker login -u $DOCKER_CREDS_USR --password $DOCKER_CREDS_PSW'
                 sh 'docker push $DOCKER_CREDS_USR/${IMAGE_NAME}:${BUILD_NUMBER}'
             }
