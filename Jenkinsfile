@@ -44,8 +44,6 @@ pipeline {
         failure {
             sh 'echo "Job ${JOB_NAME} failed for build number ${BUILD_NUMBER}."'
         }
-        always {
-            deleteDir()
-        }
+        
     }
 }
